@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Layout from '@/components/Layout';
 import { storeLocations } from '@/data/products';
-import { MapPin, Phone, Mail, Clock, Send, Star, MessageSquare, Download } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Star, MessageSquare, Download, FileDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useDocumentationDownload } from '@/hooks/useDocumentationDownload';
 
 const ContactPage = () => {
   const { toast } = useToast();
+  const { downloadDocumentation } = useDocumentationDownload();
   
   // Contact Form State
   const [contactForm, setContactForm] = useState({
@@ -223,6 +225,18 @@ Thank you for choosing BagBag!
                 </p>
                 <Button variant="gold" onClick={handleDownloadCatalog}>
                   <Download className="w-4 h-4 mr-2" />
+                  Download Catalog
+                </Button>
+              </div>
+
+              {/* Download Documentation */}
+              <div className="bg-accent/10 p-6 rounded-xl border border-accent/20">
+                <h3 className="font-display font-semibold text-foreground mb-2">Project Documentation</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Download complete eProject Report with technical docs.
+                </p>
+                <Button variant="outline" onClick={downloadDocumentation}>
+                  <FileDown className="w-4 h-4 mr-2" />
                   Download PDF
                 </Button>
               </div>
