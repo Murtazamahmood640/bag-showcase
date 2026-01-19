@@ -1,10 +1,13 @@
 import Layout from '@/components/Layout';
 import { storeLocations } from '@/data/products';
-import { CheckCircle, Award, Users, Globe, MapPin, Clock, Phone } from 'lucide-react';
+import { CheckCircle, Award, Users, Globe, MapPin, Clock, Phone, FileDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useDocumentationDownload } from '@/hooks/useDocumentationDownload';
 
 const AboutPage = () => {
+  const { downloadDocumentation } = useDocumentationDownload();
+  
   const features = [
     'Premium quality materials',
     'Handcrafted by skilled artisans',
@@ -140,6 +143,22 @@ const AboutPage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Documentation Download Section */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center animate-fade-up">
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            Project Documentation
+          </h2>
+          <p className="text-primary-foreground/70 mb-8 max-w-xl mx-auto">
+            Download our comprehensive eProject Report including technical documentation, user guides, and developer resources.
+          </p>
+          <Button variant="gold" size="xl" onClick={downloadDocumentation}>
+            <FileDown className="w-5 h-5 mr-2" />
+            Download Documentation (PDF)
+          </Button>
         </div>
       </section>
 
